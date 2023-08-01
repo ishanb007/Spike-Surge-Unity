@@ -9,10 +9,10 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 851581afad4d7c64ab3514cdac140ec1
   - enabled: 1
-    path: Assets/Scenes/CoreProgramm.unity
+    path: Assets/Scenes/DoubleTrouble.unity
     guid: 6fa9c3ef540cd46419731dedf577ff93
   - enabled: 1
-    path: Assets/Scenes/CoreProgramm 1.unity
+    path: Assets/Scenes/TripleSurge.unity
     guid: 58825f61cd32c6b4aaf60a0410e1188e
   - enabled: 1
     path: Assets/Scenes/Store.unity

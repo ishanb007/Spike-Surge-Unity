@@ -6,34 +6,43 @@ using UnityEngine.UI;
 public class Score1 : MonoBehaviour {
 
     public GameObject player;
+    public GameObject player2;
+
+    // public int noOfPlayers=3;
 
     public Text scoreText;
     public Text panelText;
     public Text highscorePanelText;
+    public string playerPrefScore;
 
     public float SCORE;
+    public float SCORE1;
+    public float SCORE2;
     public float oldSCORE= 200f;
 
-    public GameObject generator;
-    public GameObject generator1;
-    public GameObject generator2;
-
+    public GameObject[] generators;
+ 
     void Update ()
     {
-        SCORE = player.GetComponent<PlayerControl>().score;
+        SCORE1 = player.GetComponent<PlayerControl1>().score;
+        SCORE2 = player2.GetComponent<PlayerControl1>().score;
+        SCORE=SCORE1+SCORE2;
+        // generators = new GameObject[noOfPlayers];
         scoreText.text = SCORE.ToString("0");
         panelText.text = SCORE.ToString("0");
-        if (SCORE > PlayerPrefs.GetFloat("HardScore"))
+        if (SCORE > PlayerPrefs.GetFloat(playerPrefScore))
         {
-            PlayerPrefs.SetFloat("HardScore", SCORE);
+            PlayerPrefs.SetFloat(playerPrefScore, SCORE);
 
         }
-        highscorePanelText.text = PlayerPrefs.GetFloat("HardScore").ToString();
-        if (SCORE >= oldSCORE + 25)
+        highscorePanelText.text = PlayerPrefs.GetFloat(playerPrefScore).ToString();
+        if (SCORE >= oldSCORE +25)
         {
-            generator.GetComponent<DestroyInstatntiation>().SPAWN();
-            generator1.GetComponent<DestroyInstatntiation>().SPAWN();
-            generator2.GetComponent<DestroyInstatntiation>().SPAWN();
+            foreach (GameObject generator in generators)
+            {
+                generator.GetComponent<DestroyInstatntiation>().SPAWN();    
+            }
+        
             oldSCORE = SCORE;
             Debug.Log(oldSCORE);
         }

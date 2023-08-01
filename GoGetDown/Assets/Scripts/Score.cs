@@ -5,40 +5,46 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour {
 
+    public GameObject player;
+
+    // public int noOfPlayers=3;
+
     public Text scoreText;
     public Text panelText;
     public Text highscorePanelText;
+    public string playerPrefScore;
 
     public float SCORE;
     public float oldSCORE= 200f;
 
-    public GameObject generator;
-    public GameObject generator1;
-
-    public GameObject player;
-
+    public GameObject[] generators;
+ 
     void Update ()
     {
         SCORE = player.GetComponent<PlayerControl>().score;
-
+        // generators = new GameObject[noOfPlayers];
         scoreText.text = SCORE.ToString("0");
         panelText.text = SCORE.ToString("0");
-        highscorePanelText.text = PlayerPrefs.GetFloat("EasyScore").ToString();
-        if (SCORE > PlayerPrefs.GetFloat("EasyScore"))
+        if (SCORE > PlayerPrefs.GetFloat(playerPrefScore))
         {
-            PlayerPrefs.SetFloat("EasyScore", SCORE);
+            PlayerPrefs.SetFloat(playerPrefScore, SCORE);
+
         }
-        if (SCORE >= oldSCORE + 25)
+        highscorePanelText.text = PlayerPrefs.GetFloat(playerPrefScore).ToString();
+        if (SCORE >= oldSCORE +25)
         {
-            generator.GetComponent<DestroyInstatntiation>().SPAWN();
-            generator1.GetComponent<DestroyInstatntiation>().SPAWN();
+            foreach (GameObject generator in generators)
+            {
+                generator.GetComponent<DestroyInstatntiation>().SPAWN();    
+            }
+        
             oldSCORE = SCORE;
             Debug.Log(oldSCORE);
         }
 	}
     private void OnDestroy()
     {
-        PlayerPrefs.SetFloat("currency", SCORE+PlayerPrefs.GetFloat("currency"));
+        PlayerPrefs.SetFloat("currency", SCORE + PlayerPrefs.GetFloat("currency"));
 
     }
 }

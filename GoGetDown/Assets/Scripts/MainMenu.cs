@@ -8,6 +8,7 @@ public class MainMenu : MonoBehaviour {
 
     public Text scoreEasy;
     public Text scoreHard;
+    public Text gemCollector;
 
     public Text currency;
 
@@ -21,11 +22,15 @@ public class MainMenu : MonoBehaviour {
 
     public void Easy()
     {
-        SceneManager.LoadScene("CoreProgramm");
+        SceneManager.LoadScene("DoubleTrouble");
     }
     public void Hard()
     {
-        SceneManager.LoadScene("CoreProgramm 1");
+        SceneManager.LoadScene("TripleSurge");
+    }
+    public void GemCollector()
+    {
+        SceneManager.LoadScene("GemCollector");
     }
     public void Shop()
     {
@@ -34,8 +39,9 @@ public class MainMenu : MonoBehaviour {
 
     private void Start()
     {
-        scoreEasy.text = PlayerPrefs.GetFloat("EasyScore", 0).ToString();
-        scoreHard.text = PlayerPrefs.GetFloat("HardScore", 0).ToString();
+        scoreEasy.text = PlayerPrefs.GetFloat("DoubleTroubleScore", 0).ToString();
+        scoreHard.text = PlayerPrefs.GetFloat("TripleSurgeScore", 0).ToString();
+        gemCollector.text = PlayerPrefs.GetFloat("GemCollectorScore", 0).ToString();
 
         currency.text = PlayerPrefs.GetFloat("currency", 0).ToString();
 
