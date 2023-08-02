@@ -6,6 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour {
 
+    public GameObject firstScreen;
+    public GameObject secondScreen;
+
+    private AudioSource bgm;
+    
     public Text scoreEasy;
     public Text scoreHard;
     public Text gemCollector;
@@ -21,6 +26,41 @@ public class MainMenu : MonoBehaviour {
         }
     }
 
+    public void GameStart()
+    {
+        firstScreen.SetActive(false);
+        secondScreen.SetActive(true);
+    }
+    public void BackToMain()
+    {
+        secondScreen.SetActive(false);
+        firstScreen.SetActive(true);
+    }
+
+
+    public void Instagram()
+    {
+        Application.OpenURL("https://www.instagram.com/incessant_games");
+    }
+    public void Ratings()
+    {
+        Application.OpenURL("https://play.google.com/store/apps/details?id=com.Incessant.SpikeSurge");
+    }
+    public void Shop()
+    {
+        SceneManager.LoadScene("store");
+    }
+    public void LearnScreen()
+    {
+        SceneManager.LoadScene("LearnScreen");
+    }
+    public void AudioToggle(){
+        bgm = GetComponent<AudioSource>();
+        bgm.enabled = !bgm.enabled;
+    }
+
+
+
     public void Easy()
     {
         SceneManager.LoadScene("DoubleTrouble");
@@ -31,16 +71,17 @@ public class MainMenu : MonoBehaviour {
     }
     public void GemCollector()
     {
-        SceneManager.LoadScene("GemCollector");
+        SceneManager.LoadScene("Gem Collector");
     }
     public void TrickTreat()
     {
         SceneManager.LoadScene("TrickOrTreat");
     }
-    public void Shop()
+    public void ThemesScreen()
     {
-        SceneManager.LoadScene("store");
+        SceneManager.LoadScene("ThemesScreen");
     }
+
 
     private void Start()
     {
