@@ -2544,7 +2544,7 @@ MonoBehaviour:
   scoreText: {fileID: 702928358}
   panelText: {fileID: 1715061658}
   highscorePanelText: {fileID: 1220671383}
-  playerPrefScore: GemCollectorScore
+  playerPrefScore: TrickOrTreatScore
   SCORE: 0
   SCORE1: 0
   SCORE2: 0
@@ -4110,7 +4110,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1350917937}
-  - component: {fileID: 1350917936}
+  - component: {fileID: 1350917938}
   m_Layer: 0
   m_Name: Generator
   m_TagString: Untagged
@@ -4118,26 +4118,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1350917936
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1350917935}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e43232feff781924184f9701105954e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerprefab: {fileID: 1536583074384638, guid: 49d1d5638307e0e4d8012dc6ff0be5bb,
-    type: 3}
-  numberOfPlatforms: 250
-  numberOfPlatforms1: 25
-  levelWidth: -0.7
-  levelWidth1: -2.3
-  minY: 3.7
-  maxY: 8.5
 --- !u!4 &1350917937
 Transform:
   m_ObjectHideFlags: 0
@@ -4153,6 +4133,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1350917938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350917935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca0faa07a8ebadf4f909cf0ff38146e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerprefab: {fileID: 1536583074384638, guid: 337ef7cda42bc7a4093b0a7fbe1cd16c,
+    type: 3}
+  playerprefabCollect: {fileID: 1536583074384638, guid: 49d1d5638307e0e4d8012dc6ff0be5bb,
+    type: 3}
+  numberOfPlatforms: 250
+  numberOfPlatforms1: 25
+  levelWidth: -0.7
+  levelWidth1: -2.3
+  minY: 3.7
+  maxY: 8.5
 --- !u!1 &1354708113
 GameObject:
   m_ObjectHideFlags: 0
@@ -4867,7 +4869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameManager: {fileID: 1130373070}
-  reqCount: 2
+  reqCount: 0
   score: 0
 --- !u!114 &1684630569
 MonoBehaviour:
@@ -5218,7 +5220,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1782658122}
-  - component: {fileID: 1782658121}
+  - component: {fileID: 1782658123}
   m_Layer: 0
   m_Name: Generator (1)
   m_TagString: Untagged
@@ -5226,26 +5228,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1782658121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1782658120}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e43232feff781924184f9701105954e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerprefab: {fileID: 1536583074384638, guid: 49d1d5638307e0e4d8012dc6ff0be5bb,
-    type: 3}
-  numberOfPlatforms: 250
-  numberOfPlatforms1: 25
-  levelWidth: 0.7
-  levelWidth1: 2.3
-  minY: 3.7
-  maxY: 8.5
 --- !u!4 &1782658122
 Transform:
   m_ObjectHideFlags: 0
@@ -5261,6 +5243,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1782658123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782658120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca0faa07a8ebadf4f909cf0ff38146e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerprefab: {fileID: 1536583074384638, guid: 337ef7cda42bc7a4093b0a7fbe1cd16c,
+    type: 3}
+  playerprefabCollect: {fileID: 1536583074384638, guid: 49d1d5638307e0e4d8012dc6ff0be5bb,
+    type: 3}
+  numberOfPlatforms: 250
+  numberOfPlatforms1: 25
+  levelWidth: 0.7
+  levelWidth1: 2.3
+  minY: 3.7
+  maxY: 8.5
 --- !u!1 &1856095193
 GameObject:
   m_ObjectHideFlags: 0

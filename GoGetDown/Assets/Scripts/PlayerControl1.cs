@@ -7,6 +7,9 @@ public class PlayerControl1 : MonoBehaviour {
     public GameObject[] skins;
     public GameObject basicSkin;
 
+    public GameObject GameManager;
+
+    
     public Rigidbody2D rb;
     public float XPos = 2f;
     public float XPos1 = 0f;
@@ -66,10 +69,14 @@ public class PlayerControl1 : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.tag == ("Obstacles"))
+        if (col.tag == ("Collect"))
         {
             Destroy(col.gameObject);
             score += 1;
+        } 
+        else if (col.tag == ("Obstacles"))
+        {
+            GameManager.GetComponent<GameManage>().GameOver();
         }
     }
     private void OnMouseDown()

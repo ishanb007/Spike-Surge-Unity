@@ -8,17 +8,23 @@ public class LineCollide : MonoBehaviour
     public GameObject GameManager;
 
     private int count=0;
+    public int reqCount=2;
+    public int score = 0;
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.tag == ("Obstacles"))
+        if (col.tag == ("Collect"))
         {
             count+=1;
              OnHit();
+        } 
+        else if (col.tag == ("Obstacles"))
+        {
+            score +=1;
         }
     }
     public void OnHit(){
-        if (count > 2){
+        if (count > reqCount){
             GameManager.GetComponent<GameManage>().GameOver();
         }
     }

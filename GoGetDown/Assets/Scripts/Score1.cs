@@ -7,6 +7,7 @@ public class Score1 : MonoBehaviour {
 
     public GameObject player;
     public GameObject player2;
+    public GameObject lineCollide;
 
     // public int noOfPlayers=3;
 
@@ -18,6 +19,7 @@ public class Score1 : MonoBehaviour {
     public float SCORE;
     public float SCORE1;
     public float SCORE2;
+    public float SCORE3;
     public float oldSCORE= 200f;
 
     public GameObject[] generators;
@@ -26,7 +28,8 @@ public class Score1 : MonoBehaviour {
     {
         SCORE1 = player.GetComponent<PlayerControl1>().score;
         SCORE2 = player2.GetComponent<PlayerControl1>().score;
-        SCORE=SCORE1+SCORE2;
+        SCORE3 = lineCollide.GetComponent<LineCollide>().score;
+        SCORE=SCORE1+SCORE2+SCORE3;
         // generators = new GameObject[noOfPlayers];
         scoreText.text = SCORE.ToString("0");
         panelText.text = SCORE.ToString("0");

@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Store.unity
     guid: b61a117be253e1e48b420fa1e233f680
+  - enabled: 1
+    path: Assets/Scenes/Gem Collector.unity
+    guid: a22288176ddf38d469e23eeb8e343838
+  - enabled: 1
+    path: Assets/Scenes/TrickOrTreat.unity
+    guid: 138b154940b13ab4d8e123ee0309adb9
   m_configObjects: {}
