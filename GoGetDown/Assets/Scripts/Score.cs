@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour {
 
-    public GameObject player;
+    public GameObject playerLine;
 
     // public int noOfPlayers=3;
 
@@ -18,10 +18,12 @@ public class Score : MonoBehaviour {
     public float oldSCORE= 200f;
 
     public GameObject[] generators;
+
+
  
     void Update ()
     {
-        SCORE = player.GetComponent<PlayerControl>().score;
+        SCORE = playerLine.GetComponent<LineCollide>().score;
         // generators = new GameObject[noOfPlayers];
         scoreText.text = SCORE.ToString("0");
         panelText.text = SCORE.ToString("0");
@@ -45,6 +47,5 @@ public class Score : MonoBehaviour {
     private void OnDestroy()
     {
         PlayerPrefs.SetFloat("currency", SCORE + PlayerPrefs.GetFloat("currency"));
-
     }
 }

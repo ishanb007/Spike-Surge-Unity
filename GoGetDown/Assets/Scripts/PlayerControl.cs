@@ -66,16 +66,16 @@ public class PlayerControl : MonoBehaviour {
         }
     }
 
-    private void OnCollisionEnter2D()
-    {
-        GameManager.GetComponent<GameManage>().GameOver();
-    }
+    // private void OnCollisionEnter2D()
+    // {
+    //     GameManager.GetComponent<GameManage>().GameOver();
+    // }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.tag == ("Obstacles"))
         {
-            score += 1;
+            GameManager.GetComponent<GameManage>().GameOver();
         }
     }
     private void OnMouseDown()

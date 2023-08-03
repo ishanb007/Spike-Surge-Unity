@@ -25,6 +25,7 @@ public class LineCollide : MonoBehaviour
     }
     public void OnHit(){
         if (count > reqCount){
+            count = 0;
             GameManager.GetComponent<GameManage>().GameOver();
         }
     }
