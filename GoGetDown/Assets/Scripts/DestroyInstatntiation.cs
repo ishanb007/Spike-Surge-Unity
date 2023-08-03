@@ -17,9 +17,12 @@ public class DestroyInstatntiation : MonoBehaviour {
     Vector3 spawnPosition = new Vector3();
     float spawnX;
 
+    public float initialOffset=0;
+
 
     void Start()
     {
+        spawnPosition.y -=initialOffset;
         for (int i = 0; i < numberOfPlatforms; i++)
         {
             spawnX = Random.value;

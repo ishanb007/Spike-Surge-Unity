@@ -15,6 +15,7 @@ public class MainMenu : MonoBehaviour {
     public Text scoreHard;
     public Text gemCollector;
     public Text trickOrTreat;
+    public Text quadFraud;
 
     public Text currency;
 
@@ -69,6 +70,10 @@ public class MainMenu : MonoBehaviour {
     {
         SceneManager.LoadScene("TripleSurge");
     }
+    public void QuadFraud()
+    {
+        SceneManager.LoadScene("QuadFraud");
+    }
     public void GemCollector()
     {
         SceneManager.LoadScene("Gem Collector");
@@ -89,6 +94,7 @@ public class MainMenu : MonoBehaviour {
         scoreHard.text = PlayerPrefs.GetFloat("TripleSurgeScore", 0).ToString();
         gemCollector.text = PlayerPrefs.GetFloat("GemCollectorScore", 0).ToString();
         trickOrTreat.text = PlayerPrefs.GetFloat("TrickOrTreatScore", 0).ToString();
+        quadFraud.text = PlayerPrefs.GetFloat("QuadFraudScore", 0).ToString();
         
         currency.text = PlayerPrefs.GetFloat("currency", 0).ToString();
 

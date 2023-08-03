@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TrickOrTreat.unity
     guid: 138b154940b13ab4d8e123ee0309adb9
+  - enabled: 1
+    path: Assets/Scenes/QuadFraud.unity
+    guid: 9602f69e536d6e347af26ed951c5ae16
   m_configObjects: {}
