@@ -12,6 +12,8 @@ public class GameManage : MonoBehaviour {
     public GameObject[] explosions;
     public GameObject panel;
 
+    public GameObject adsManager;
+
     public float speed = -1.5f;
     public float superSpeed = 5000f;
 
@@ -52,6 +54,7 @@ public class GameManage : MonoBehaviour {
             other.SetActive(false);
         }
         yield return new WaitForSeconds(0.1f);
+        adsManager.GetComponent<GoogleAdsInGame>().ShowAd();
         panel.SetActive(true);
     }
     public void Revive(){

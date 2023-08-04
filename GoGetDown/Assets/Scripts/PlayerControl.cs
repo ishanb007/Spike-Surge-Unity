@@ -78,7 +78,7 @@ public class PlayerControl : MonoBehaviour {
             GameManager.GetComponent<GameManage>().GameOver();
         }
     }
-    private void OnMouseDown()
+    public void OnMouseDown()
     {
         if (position.x == XPos)
         {
