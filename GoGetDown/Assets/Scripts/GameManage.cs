@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManage : MonoBehaviour {
 
@@ -10,9 +11,11 @@ public class GameManage : MonoBehaviour {
     public GameObject[] players;
     public GameObject[] others;
     public GameObject[] explosions;
-    public GameObject panel;
+    public GameObject panel,currBox,score;
 
     public GameObject adsManager;
+    public GameObject rev1,rev2,revAd,home,relo,skip;
+    public  TextMeshProUGUI currency;
 
     public float speed = -1.5f;
     public float superSpeed = 5000f;
@@ -36,6 +39,14 @@ public class GameManage : MonoBehaviour {
         Scene restart = SceneManager.GetActiveScene();
         SceneManager.LoadScene (restart.name);
     }
+    public void Skip(){
+        rev1.SetActive(false);
+        rev2.SetActive(false);
+        revAd.SetActive(false);
+        skip.SetActive(false);
+        home.SetActive(true);
+        relo.SetActive(true);
+    }
 
     IEnumerator GameOver1()
     {
@@ -54,11 +65,22 @@ public class GameManage : MonoBehaviour {
             other.SetActive(false);
         }
         yield return new WaitForSeconds(0.1f);
+        currency.SetText(PlayerPrefs.GetFloat("currency").ToString());
+        currBox.SetActive(true);
+        score.SetActive(false);
         adsManager.GetComponent<GoogleAdsInGame>().ShowAd();
         panel.SetActive(true);
     }
+    public void ReviveCost(){
+        if(PlayerPrefs.GetFloat("currency")<200)return;
+        PlayerPrefs.SetFloat("currency", PlayerPrefs.GetFloat("currency") - 200);
+        currency.SetText(PlayerPrefs.GetFloat("currency").ToString());
+        Revive();
+    }
     public void Revive(){
         panel.SetActive(false);
+        currBox.SetActive(false);
+        score.SetActive(true);
         foreach (GameObject particle in explosions)
         {
             particle.SetActive(false);

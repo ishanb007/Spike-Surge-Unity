@@ -3,21 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
+using TMPro;
 public class MainMenu : MonoBehaviour {
 
     public GameObject firstScreen;
     public GameObject secondScreen;
+    public GameObject backButton;
+    public GameObject aud1,aud2;
 
     private AudioSource bgm;
     
-    public Text scoreEasy;
-    public Text scoreHard;
-    public Text gemCollector;
-    public Text trickOrTreat;
-    public Text quadFraud;
+    public TextMeshProUGUI scoreEasy1;
+    public  TextMeshProUGUI scoreHard1;
+    public  TextMeshProUGUI gemCollector1;
+    public  TextMeshProUGUI trickOrTreat1;
+    public  TextMeshProUGUI quadFraud1;
 
-    public Text currency;
+    public TMP_Text currency1;
 
     public void Update()
     {
@@ -31,10 +33,12 @@ public class MainMenu : MonoBehaviour {
     {
         firstScreen.SetActive(false);
         secondScreen.SetActive(true);
+        backButton.SetActive(true);
     }
     public void BackToMain()
     {
         secondScreen.SetActive(false);
+        backButton.SetActive(false);
         firstScreen.SetActive(true);
     }
 
@@ -42,6 +46,10 @@ public class MainMenu : MonoBehaviour {
     public void Instagram()
     {
         Application.OpenURL("https://www.instagram.com/incessant_games");
+    }
+    public void PrivPolicy()
+    {
+        Application.OpenURL("https://docs.google.com/document/d/1BJ7LyG-bopyW0xiMCE72mkR0NRN2nrYXkPrXKan6CAc/edit?pli=1");
     }
     public void Ratings()
     {
@@ -58,6 +66,12 @@ public class MainMenu : MonoBehaviour {
     public void AudioToggle(){
         bgm = GetComponent<AudioSource>();
         bgm.enabled = !bgm.enabled;
+        aud1.SetActive(!aud1.activeSelf);
+        aud2.SetActive(!aud2.activeSelf);
+        if(PlayerPrefs.GetInt("aud")==1){
+            PlayerPrefs.SetInt("aud",0);
+        }
+        else{PlayerPrefs.SetInt("aud",1);}
     }
 
 
@@ -90,15 +104,40 @@ public class MainMenu : MonoBehaviour {
 
     private void Start()
     {
-        scoreEasy.text = PlayerPrefs.GetFloat("DoubleTroubleScore", 0).ToString();
-        scoreHard.text = PlayerPrefs.GetFloat("TripleSurgeScore", 0).ToString();
-        gemCollector.text = PlayerPrefs.GetFloat("GemCollectorScore", 0).ToString();
-        trickOrTreat.text = PlayerPrefs.GetFloat("TrickOrTreatScore", 0).ToString();
-        quadFraud.text = PlayerPrefs.GetFloat("QuadFraudScore", 0).ToString();
+        scoreEasy1.SetText(PlayerPrefs.GetFloat("DoubleTroubleScore", 0).ToString());
+        scoreHard1.SetText(PlayerPrefs.GetFloat("TripleSurgeScore", 0).ToString());
+        gemCollector1.SetText(PlayerPrefs.GetFloat("GemCollectorScore", 0).ToString());
+        trickOrTreat1.SetText(PlayerPrefs.GetFloat("TrickOrTreatScore", 0).ToString());
+        quadFraud1.SetText(PlayerPrefs.GetFloat("QuadFraudScore", 0).ToString());
         
-        currency.text = PlayerPrefs.GetFloat("currency", 0).ToString();
+        currency1.SetText(PlayerPrefs.GetFloat("currency", 0).ToString());
 
-        PlayerPrefs.SetInt("skin", 1);
+        
+        
+        if (PlayerPrefs.GetInt("FIRSTTIMEOPENING", 1) == 1)
+        {
+            Debug.Log("First Time Opening");
+
+            //Set first time opening to false
+            PlayerPrefs.SetInt("FIRSTTIMEOPENING", 0);
+
+            PlayerPrefs.SetInt("skin", 1);
+            PlayerPrefs.SetInt("aud",1);
+        }
+        else
+        {
+            Debug.Log("NOT First Time Opening");
+            if(PlayerPrefs.GetInt("aud")==0){
+                bgm = GetComponent<AudioSource>();
+                bgm.enabled = !bgm.enabled;
+                aud1.SetActive(!aud1.activeSelf);
+                aud2.SetActive(!aud2.activeSelf);
+            }
+        }
+
+        
+
+        
     }
 
 }

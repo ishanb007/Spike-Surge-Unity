@@ -22,10 +22,11 @@ public class PlayerControl : MonoBehaviour {
 
     public void Awake()
     {
-        int skin = PlayerPrefs.GetInt("skin");
+        int skinn = PlayerPrefs.GetInt("skin");
+        Debug.Log(skinn);
         for (int i = 0; i < skins.Length; i++)
         {
-            if(i+1 == skin)
+            if(i+1 == skinn)
             {
                 skins[i].SetActive(true);
                 basicSkin.SetActive(false);

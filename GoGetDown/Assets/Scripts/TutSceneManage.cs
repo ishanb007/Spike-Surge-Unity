@@ -7,6 +7,7 @@ public class TutSceneManage : MonoBehaviour
 {
 
     public GameObject[] players;
+    public GameObject tap1,tap2;
     public GameObject startBut;
 
     // Start is called before the first frame update
@@ -18,12 +19,21 @@ public class TutSceneManage : MonoBehaviour
     IEnumerator Steps()
     {
         Debug.Log("Play");
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.9f);
+        tap1.SetActive(true);
         players[0].GetComponent<PlayerControl>().OnMouseDown();
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.1f);
+        tap1.SetActive(false);
+        yield return new WaitForSeconds(1.4f);
+        tap2.SetActive(true);
         players[1].GetComponent<PlayerControl>().OnMouseDown();
-        yield return new WaitForSeconds(1.3f);
+        yield return new WaitForSeconds(0.1f);
+        tap2.SetActive(false);
+        yield return new WaitForSeconds(1.2f);
+        tap1.SetActive(true);
         players[0].GetComponent<PlayerControl>().OnMouseDown();
+        yield return new WaitForSeconds(0.1f);
+        tap1.SetActive(false);
         yield return new WaitForSeconds(1f);
         startBut.SetActive(true);
         yield return new WaitForSeconds(0.7f);

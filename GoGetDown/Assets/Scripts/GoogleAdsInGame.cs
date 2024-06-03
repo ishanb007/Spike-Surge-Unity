@@ -28,6 +28,7 @@ public class GoogleAdsInGame : MonoBehaviour
 
 
     public GameObject gameManager;
+    public GameObject revive_mid,revive_side,revive_ad;
 
     public void LoadRewardedAd()
     {
@@ -59,6 +60,9 @@ public class GoogleAdsInGame : MonoBehaviour
               Debug.Log("Rewarded ad loaded with response : "
                         + ad.GetResponseInfo());
 
+              revive_ad.SetActive(true);
+              revive_side.SetActive(true);
+              revive_mid.SetActive(false);
               rewardedAd = ad;
           });
 
@@ -76,6 +80,9 @@ public class GoogleAdsInGame : MonoBehaviour
             {
                 // TODO: Reward the user.
                 Debug.Log(rewardMsg+" "+ reward.Type+" "+ reward.Amount);
+                revive_ad.SetActive(false);
+                revive_side.SetActive(false);
+                revive_mid.SetActive(true);
                 gameManager.GetComponent<GameManage>().Revive();
             });
         }
@@ -88,7 +95,7 @@ public class GoogleAdsInGame : MonoBehaviour
         {
             Debug.Log("Rewarded ad paid {0} {1}."+
                 adValue.Value+
-                adValue.CurrencyCode);
+                adValue.CurrencyCode);      
         };
         // Raised when an impression is recorded for an ad.
         ad.OnAdImpressionRecorded += () =>

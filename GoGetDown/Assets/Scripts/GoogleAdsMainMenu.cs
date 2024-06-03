@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using GoogleMobileAds;
 using GoogleMobileAds.Api;
+using TMPro;
 
 public class GoogleAdsMainMenu : MonoBehaviour
 {
@@ -27,6 +28,8 @@ public class GoogleAdsMainMenu : MonoBehaviour
     #endif
 
     private RewardedAd rewardedAd;
+    public GameObject rewardIcon;
+    public  TextMeshProUGUI currency;
 
     /// Creates a 320x50 banner at top of the screen.
     public void CreateBannerView()
@@ -143,11 +146,12 @@ public class GoogleAdsMainMenu : MonoBehaviour
                                  "with error : " + error);
                   return;
               }
-
+            
               Debug.Log("Rewarded ad loaded with response : "
                         + ad.GetResponseInfo());
 
               rewardedAd = ad;
+              rewardIcon.SetActive(true);
           });
 
           RegisterReloadHandler(rewardedAd);
@@ -164,6 +168,9 @@ public class GoogleAdsMainMenu : MonoBehaviour
             {
                 // TODO: Reward the user.
                 Debug.Log(rewardMsg+" "+ reward.Type+" "+ reward.Amount);
+                PlayerPrefs.SetFloat("currency", PlayerPrefs.GetFloat("currency") + 200);
+                currency.SetText(PlayerPrefs.GetFloat("currency").ToString());
+                rewardIcon.SetActive(false);
             });
         }
     }
@@ -173,6 +180,7 @@ public class GoogleAdsMainMenu : MonoBehaviour
         // Raised when the ad is estimated to have earned money.
         ad.OnAdPaid += (AdValue adValue) =>
         {
+            
             Debug.Log("Rewarded ad paid {0} {1}."+
                 adValue.Value+
                 adValue.CurrencyCode);
