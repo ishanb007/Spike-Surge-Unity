@@ -7,7 +7,7 @@ using GoogleMobileAds.Api;
 public class GoogleAdsInGame : MonoBehaviour
 {
     #if UNITY_ANDROID
-    private string _adUnitIdRe = "ca-app-pub-3940256099942544/5224354917";
+    private string _adUnitIdRe = "ca-app-pub-7993268786993436/1035861601";
     #elif UNITY_IPHONE
     private string _adUnitIdRe = "ca-app-pub-3940256099942544/1712485313";
     #else
@@ -17,7 +17,7 @@ public class GoogleAdsInGame : MonoBehaviour
     private RewardedAd rewardedAd;
 
     #if UNITY_ANDROID
-    private string _adUnitId = "ca-app-pub-3940256099942544/1033173712";
+    private string _adUnitId = "ca-app-pub-7993268786993436/6172733673";
     #elif UNITY_IPHONE
     private string _adUnitId = "ca-app-pub-3940256099942544/4411468910";
     #else

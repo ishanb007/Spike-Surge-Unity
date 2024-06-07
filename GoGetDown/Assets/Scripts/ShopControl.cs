@@ -12,6 +12,7 @@ public class ShopControl : MonoBehaviour {
     public GameObject[] selects;
 
     public float Price = 200f;
+    public float Price2 = 200f;
 
     // public Text currency;
     public  TextMeshProUGUI currency;
@@ -107,9 +108,9 @@ public class ShopControl : MonoBehaviour {
     }
     public void Purchase5()
     {
-        if (PlayerPrefs.GetFloat("currency") >= Price)
+        if (PlayerPrefs.GetFloat("currency") >= Price2)
         {
-            PlayerPrefs.SetFloat("currency", PlayerPrefs.GetFloat("currency") - Price);
+            PlayerPrefs.SetFloat("currency", PlayerPrefs.GetFloat("currency") - Price2);
             PlayerPrefs.SetInt("purchase5", 1);
             purchaseButton[4].SetActive(false);
             selectButtons[4].SetActive(true);
@@ -118,9 +119,9 @@ public class ShopControl : MonoBehaviour {
     }
     public void Purchase6()
     {
-        if (PlayerPrefs.GetFloat("currency") >= Price)
+        if (PlayerPrefs.GetFloat("currency") >= Price2)
         {
-            PlayerPrefs.SetFloat("currency", PlayerPrefs.GetFloat("currency") - Price);
+            PlayerPrefs.SetFloat("currency", PlayerPrefs.GetFloat("currency") - Price2);
             PlayerPrefs.SetInt("purchase6", 1);
             purchaseButton[5].SetActive(false);
             selectButtons[5].SetActive(true);

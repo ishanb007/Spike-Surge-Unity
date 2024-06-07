@@ -14,7 +14,7 @@ public class GameManage : MonoBehaviour {
     public GameObject panel,currBox,score;
 
     public GameObject adsManager;
-    public GameObject rev1,rev2,revAd,home,relo,skip;
+    public GameObject rev1,rev2,revAd,home,relo,skip,tex;
     public  TextMeshProUGUI currency;
 
     public float speed = -1.5f;
@@ -23,12 +23,21 @@ public class GameManage : MonoBehaviour {
     public float offset;
 
     public AudioSource hit;
+    private AudioSource bgm;
 
     public void GameOver()
     {
         StartCoroutine(GameOver1());
     }
 
+    void Start(){
+        if(PlayerPrefs.GetInt("aud")==0){
+            bgm = GetComponent<AudioSource>();
+            bgm.enabled = false;
+            players[0].GetComponent<AudioSource>().enabled=false;
+        }
+        StartCoroutine(TextDisap());
+    }
 
     public void Back()
     {
@@ -64,10 +73,10 @@ public class GameManage : MonoBehaviour {
         {
             other.SetActive(false);
         }
+        score.SetActive(false);
         yield return new WaitForSeconds(0.1f);
         currency.SetText(PlayerPrefs.GetFloat("currency").ToString());
         currBox.SetActive(true);
-        score.SetActive(false);
         adsManager.GetComponent<GoogleAdsInGame>().ShowAd();
         panel.SetActive(true);
     }
@@ -95,6 +104,12 @@ public class GameManage : MonoBehaviour {
             rbs.transform.position = rbs.transform.position + new Vector3(0,offset,0);
             rbs.GetComponent<Rigidbody2D>().AddForce(transform.up * speed * Time.fixedDeltaTime * superSpeed, ForceMode2D.Force);
         }
+    }
+    IEnumerator TextDisap()
+    {
+        yield return new WaitForSeconds(2f);
+        tex.SetActive(false);
+        
     }
 
 }

@@ -15,7 +15,7 @@ public class PlayerControl1 : MonoBehaviour {
     public float XPos1 = 0f;
 
     public float speed = -1.5f;
-    public float superSpeed = 5000f;
+    public float superSpeed = 5000f,updateSpeed=1.4f;
 
     public Vector3 position;
 
@@ -47,7 +47,7 @@ public class PlayerControl1 : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        rb.AddForce(transform.up * speed * Time.fixedDeltaTime *2f, ForceMode2D.Force);
+        rb.AddForce(transform.up * speed * Time.fixedDeltaTime *updateSpeed, ForceMode2D.Force);
     }
 
     public void OnMouseDownCLICK()

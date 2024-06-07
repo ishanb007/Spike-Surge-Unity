@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Score1 : MonoBehaviour {
 
@@ -11,9 +12,9 @@ public class Score1 : MonoBehaviour {
 
     // public int noOfPlayers=3;
 
-    public Text scoreText;
-    public Text panelText;
-    public Text highscorePanelText;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI panelText;
+    public TextMeshProUGUI highscorePanelText;
     public string playerPrefScore;
 
     public float SCORE;
@@ -21,6 +22,7 @@ public class Score1 : MonoBehaviour {
     public float SCORE2;
     public float SCORE3;
     public float oldSCORE= 200f;
+    public float scoreSoFar=0;
 
     public GameObject[] generators;
  
@@ -31,14 +33,14 @@ public class Score1 : MonoBehaviour {
         SCORE3 = lineCollide.GetComponent<LineCollide>().score;
         SCORE=SCORE1+SCORE2+SCORE3;
         // generators = new GameObject[noOfPlayers];
-        scoreText.text = SCORE.ToString("0");
-        panelText.text = SCORE.ToString("0");
+        scoreText.SetText(SCORE.ToString("0"));
+        panelText.SetText(SCORE.ToString("0"));
         if (SCORE > PlayerPrefs.GetFloat(playerPrefScore))
         {
             PlayerPrefs.SetFloat(playerPrefScore, SCORE);
 
         }
-        highscorePanelText.text = PlayerPrefs.GetFloat(playerPrefScore).ToString();
+        highscorePanelText.SetText(PlayerPrefs.GetFloat(playerPrefScore).ToString());
         if (SCORE >= oldSCORE +25)
         {
             foreach (GameObject generator in generators)
@@ -50,9 +52,14 @@ public class Score1 : MonoBehaviour {
             Debug.Log(oldSCORE);
         }
 	}
-    private void OnDestroy()
-    {
-        PlayerPrefs.SetFloat("currency", SCORE + PlayerPrefs.GetFloat("currency"));
-
+    private void OnDisable() {
+        Debug.Log("disabled");
+        PlayerPrefs.SetFloat("currency", SCORE + PlayerPrefs.GetFloat("currency")-scoreSoFar);
+        scoreSoFar=SCORE;
     }
+    // private void OnDestroy()
+    // {
+    //     PlayerPrefs.SetFloat("currency", SCORE + PlayerPrefs.GetFloat("currency"));
+
+    // }
 }

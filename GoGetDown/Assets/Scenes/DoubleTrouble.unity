@@ -556,8 +556,9 @@ MonoBehaviour:
   rb: {fileID: 32892385}
   XPos: 0.55
   XPos1: 1.98
-  speed: -1.5
-  superSpeed: 9500
+  speed: -1.25
+  superSpeed: 9200
+  updateSpeed: 1.5
   position: {x: 0, y: 0, z: 0}
   score: 0
 --- !u!50 &32892385
@@ -1006,7 +1007,8 @@ MonoBehaviour:
   highscorePanelText: {fileID: 1092391155}
   playerPrefScore: DoubleTroubleScore
   SCORE: 0
-  oldSCORE: 200
+  oldSCORE: 100
+  scoreSoFar: 0
   generators:
   - {fileID: 1350917935}
   - {fileID: 1782658120}
@@ -1216,6 +1218,8 @@ MonoBehaviour:
   GameManager: {fileID: 1130373070}
   reqCount: 2
   score: 0
+  hearts: []
+  i: 2
 --- !u!4 &320098640
 Transform:
   m_ObjectHideFlags: 0
@@ -2740,8 +2744,9 @@ MonoBehaviour:
   rb: {fileID: 506958320}
   XPos: -0.55
   XPos1: -1.98
-  speed: -1.5
-  superSpeed: 9500
+  speed: -1.25
+  superSpeed: 9200
+  updateSpeed: 1.5
   position: {x: 0, y: 0, z: 0}
   score: 0
 --- !u!82 &506958324
@@ -4420,6 +4425,7 @@ MonoBehaviour:
   home: {fileID: 27312433}
   relo: {fileID: 394074385}
   skip: {fileID: 338156591}
+  tex: {fileID: 1619168316}
   currency: {fileID: 1330419849}
   speed: -1.5
   superSpeed: 10000
@@ -4654,7 +4660,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 506958319}
-  offset: 3
+  offset: 2.5
 --- !u!1001 &1149880591
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5336,9 +5342,9 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1909369669}
+  - {fileID: 306876848}
   - {fileID: 438597333}
   - {fileID: 1981873187}
-  - {fileID: 306876848}
   - {fileID: 1856095196}
   - {fileID: 1257917985}
   m_Father: {fileID: 0}
@@ -5547,11 +5553,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerprefab: {fileID: 1536583074384638, guid: 337ef7cda42bc7a4093b0a7fbe1cd16c,
     type: 3}
-  numberOfPlatforms: 250
+  numberOfPlatforms: 150
   numberOfPlatforms1: 25
   levelWidth: -0.55
   levelWidth1: -1.98
-  minY: 3.7
+  minY: 4.8
   maxY: 8.5
   initialOffset: 0
 --- !u!4 &1350917937
@@ -6381,6 +6387,37 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1618745526}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1619168316
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1619168317}
+  m_Layer: 0
+  m_Name: faketex
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1619168317
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619168316}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 300, y: 300, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1621419527
 GameObject:
   m_ObjectHideFlags: 0
@@ -6878,11 +6915,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerprefab: {fileID: 1536583074384638, guid: 337ef7cda42bc7a4093b0a7fbe1cd16c,
     type: 3}
-  numberOfPlatforms: 250
+  numberOfPlatforms: 150
   numberOfPlatforms1: 25
   levelWidth: 0.55
   levelWidth1: 1.98
-  minY: 3.7
+  minY: 4.8
   maxY: 8.5
   initialOffset: 0
 --- !u!4 &1782658122
@@ -7494,7 +7531,7 @@ RectTransform:
   m_GameObject: {fileID: 2119306723}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9, y: 0.9, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1744259467}
@@ -7502,8 +7539,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0, y: 6}
+  m_SizeDelta: {x: 101, y: 92}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2119306725
 MonoBehaviour:
@@ -7525,7 +7562,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6b92ced09b7b7044ea86b56fb0cef42b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 58d7eb37a1503b844a762abf063f8477, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -17,6 +17,7 @@ public class Score : MonoBehaviour {
 
     public float SCORE;
     public float oldSCORE= 200f;
+    public float scoreSoFar=0;
 
     public GameObject[] generators;
 
@@ -45,8 +46,13 @@ public class Score : MonoBehaviour {
             Debug.Log(oldSCORE);
         }
 	}
-    private void OnDestroy()
-    {
-        PlayerPrefs.SetFloat("currency", SCORE + PlayerPrefs.GetFloat("currency"));
+    private void OnDisable() {
+        Debug.Log("disabled");
+        PlayerPrefs.SetFloat("currency", SCORE + PlayerPrefs.GetFloat("currency")-scoreSoFar);
+        scoreSoFar=SCORE;
     }
+    // private void OnDestroy()
+    // {
+    //     PlayerPrefs.SetFloat("currency", SCORE + PlayerPrefs.GetFloat("currency"));
+    // }
 }

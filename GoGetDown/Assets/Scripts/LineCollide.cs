@@ -11,12 +11,18 @@ public class LineCollide : MonoBehaviour
     public int reqCount=2;
     public int score = 0;
 
+    public GameObject[] hearts;
+    public int i=2;
+
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.tag == ("Collect"))
         {
             count+=1;
-             OnHit();
+            if(i>=0){
+            hearts[i].SetActive(false);
+            i--;}
+            OnHit();
         } 
         else if (col.tag == ("Obstacles"))
         {

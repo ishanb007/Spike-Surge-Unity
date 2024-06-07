@@ -14,11 +14,13 @@ public class PlayerControl : MonoBehaviour {
     public float XPos1 = 0f;
 
     public float speed = -1.5f;
-    public float superSpeed = 5000f;
+    public float superSpeed = 5000f,updateSpeed=1.4f;
 
     public Vector3 position;
 
     public int score = 0;
+
+    
 
     public void Awake()
     {
@@ -37,6 +39,7 @@ public class PlayerControl : MonoBehaviour {
 
     private void Start()
     {
+
         rb.AddForce(transform.up * speed * Time.fixedDeltaTime * superSpeed, ForceMode2D.Force);
     }
 
@@ -47,7 +50,7 @@ public class PlayerControl : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        rb.AddForce(transform.up * speed * Time.fixedDeltaTime *2f, ForceMode2D.Force);
+        rb.AddForce(transform.up * speed * Time.fixedDeltaTime *updateSpeed, ForceMode2D.Force);
     }
 
     public void OnMouseDownCLICK()
